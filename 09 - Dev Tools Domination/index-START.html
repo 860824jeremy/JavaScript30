@@ -1,47 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Console Tricks!</title>
-  <link rel="icon" href="https://fav.farm/🔥" />
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Console Tricks!</title>
+        <link rel="icon" href="https://fav.farm/🔥" />
+    </head>
+    <body>
+        <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
-  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+        <script>
+            const dogs = [
+                { name: "Snickers", age: 2 },
+                { name: "hugo", age: 8 },
+            ];
 
-  <script>
-    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+            function makeGreen() {
+                const p = document.querySelector("p");
+                p.style.color = "#BADA55";
+                p.style.fontSize = "50px";
+            }
 
-    function makeGreen() {
-      const p = document.querySelector('p');
-      p.style.color = '#BADA55';
-      p.style.fontSize = '50px';
-    }
+            // Regular
+            console.log("hello");
 
-    // Regular
+            // Interpolated
+            console.log("hello %s", "Jeremy");
 
-    // Interpolated
+            // Styled
+            console.log(
+                "%c hello",
+                "color: red; font-size: 50px; background: yellow"
+            );
 
-    // Styled
+            // warning!
+            console.warn("NO!");
 
-    // warning!
+            // Error :|
+            console.error("It's an Error!");
 
-    // Error :|
+            // Info
+            console.info(
+                "15T has Jeremy, Watson, FangFang, Tangerine and Jami."
+            );
 
-    // Info
+            // Testing
+            const p = document.querySelector("p");
+            console.assert(
+                p.classList.contains("ouch"),
+                "You didn't select the right Element!"
+            );
 
-    // Testing
+            // clearing
+            console.clear();
 
-    // clearing
+            // Viewing DOM Elements
+            console.log(p);
+            console.dir(p);
 
-    // Viewing DOM Elements
+            // console.clear();
 
-    // Grouping together
+            // Grouping together
+            dogs.forEach((dog) => {
+                console.group(`${dog.name}`);
+                console.log(`This is ${dog.name}`);
+                console.log(`${dog.name} is ${dog.age} years old.`);
+                console.log(`${dog.name} is ${dog.age * 7} dog years old.`);
+                console.groupEnd(`${dog.name}`);
+            });
 
-    // counting
+            // counting
+            console.count("Jeremy");
+            console.count("Jeremy");
+            console.count("Jeremy");
 
-    // timing
+            console.count("Watson");
+            console.count("Watson");
+            console.count("Watson");
 
-  </script>
-</body>
+            // timing
+            console.time("fetch time");
+            fetch(
+                "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json"
+            )
+                .then((data) => data.json())
+                .then((data) => console.timeEnd("fetch time"));
+
+            console.table(dogs);
+        </script>
+    </body>
 </html>
