@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Key Detection</title>
-    <script type="text/javascript" src="./cornify.js"></script>
-    <link rel="icon" href="https://fav.farm/🔥" />
-  </head>
-  <body>
-    <script></script>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Key Detection</title>
+        <script type="text/javascript" src="./cornify.js"></script>
+        <link rel="icon" href="https://fav.farm/🔥" />
+    </head>
+    <body>
+        <script>
+            const magicWord = "jeremy";
+            const input = [];
+
+            document.addEventListener("keyup", (e) => {
+                input.push(e.key);
+                input.splice(0, input.length - magicWord.length);
+                console.log(input);
+
+                if (input.join("").includes(magicWord)) {
+                    console.log("bingo!");
+                    cornify_add();
+                }
+                // if (input.join("") === magicWord) {
+                //     console.log("bingo!");
+                //     cornify_add();
+                // }
+            });
+        </script>
+    </body>
 </html>
